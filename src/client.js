@@ -39,91 +39,149 @@ class APIClient {
     }
   }
 
-  async getHostsCount(query) {
+  async getHostsCount(query, callback) {
     const apiUrl = `${this.baseUrl}/hosts/count`;
     const requestData = new HostCountRequestModel(query);
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
-    const data = new HostCountResponse(
-      response.success,
-      response.data,
-      response.message
-    );
-    return response;
+
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      const data = new HostCountResponse(
+        response.success,
+        response.data,
+        response.message
+      );
+
+      if (typeof callback === "function") {
+        callback(null, data);
+      }
+
+      return data;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getHostsIpDetails(ip) {
+  async getHostsIpDetails(ip, callback) {
     const apiUrl = `${this.baseUrl}/hosts/${ip}/`;
-    const response = await this.makeRequest(
-      apiUrl,
-      "GET",
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "GET");
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getIpCveDetails(ip) {
+  async getIpCveDetails(ip, callback) {
     const apiUrl = `${this.baseUrl}/hosts/cve/${ip}/`;
-    const response = await this.makeRequest(apiUrl, "GET", ip);
+    try {
+      const response = await this.makeRequest(apiUrl, "GET", ip);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async searchHosts(query) {
+  async searchHosts(query, callback) {
     const apiUrl = `${this.baseUrl}/hosts/search`;
     const requestData = new HostsSearchRequest(
       query.limit,
       query.query,
       query.start
     );
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getHostsSummary(query) {
+  async getHostsSummary(query, callback) {
     const apiUrl = `${this.baseUrl}/hosts/summary`;
     const requestData = new HostsSummaryRequest(query.limit, query.field);
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getCertificateCount(query) {
+  async getCertificateCount(query, callback) {
     const apiUrl = `${this.baseUrl}/certificates/count`;
     const requestData = new CertificateCountRequest(query);
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getCertificateHashDetails(hash) {
+  async getCertificateHashDetails(hash, callback) {
     const apiUrl = `${this.baseUrl}/certificates/${hash}/`;
-    const response = await this.makeRequest(
-      apiUrl,
-      "GET",
-      hash
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "GET", hash);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async searchCertificates(query) {
+  // searchCertificates function with Promise and callback support
+  async searchCertificates(query, callback) {
     const apiUrl = `${this.baseUrl}/certificates/search`;
     const requestData = new CertificateSearchRequest(
       query.limit,
@@ -131,29 +189,43 @@ class APIClient {
       query.start,
       query.pages
     );
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 
-  async getCertificatesSummary(query) {
+  async getCertificatesSummary(query, callback) {
     const apiUrl = `${this.baseUrl}/certificates/summary`;
     const requestData = new CertificateSummaryRequest(
       query.limit,
       query.field,
       query.query
     );
-    const response = await this.makeRequest(
-      apiUrl,
-      "POST",
-      requestData
-    );
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      if (typeof callback === "function") {
+        callback(null, response);
+      }
 
-    return response;
+      return response;
+    } catch (error) {
+      if (typeof callback === "function") {
+        callback(error, null);
+      }
+
+      return Promise.reject(error);
+    }
   }
 }
 
