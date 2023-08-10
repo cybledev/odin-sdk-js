@@ -1,6 +1,5 @@
 const {
   HostCountRequestModel,
-  HostCountResponse,
   HostsSearchRequest,
   HostsSummaryRequest,
   CertificateCountRequest,
@@ -31,73 +30,96 @@ class APIClient {
 
       if (!response.ok) {
         const error = new APIError(response.status, responseBody.message);
-        return Promise.reject(error);
+        throw error;
       }
-      return Promise.resolve(responseBody);
+      return responseBody;
     } catch (error) {
-      return Promise.reject(error);
+      throw error;
     }
+  }
+
+  promisify(callbackFunction) {
+    return (...args) => {
+      return new Promise((resolve, reject) => {
+        if (callbackFunction) {
+          callbackFunction(...args, (err, data) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          });
+        } else {
+          resolve(...args);
+        }
+      });
+    };
   }
 
   async getHostsCount(query, callback) {
     const apiUrl = `${this.baseUrl}/hosts/count`;
     const requestData = new HostCountRequestModel(query);
 
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      const data = new HostCountResponse(
-        response.success,
-        response.data,
-        response.message
-      );
-
-      if (typeof callback === "function") {
-        callback(null, data);
-      }
-
-      return data;
+      promisifiedCallback(null, response);
+      // callback(null, response)
+      return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
+      promisifiedCallback(error, null);
+      // call
+      return error;
+    }
+  }
 
-      return Promise.reject(error);
+  async searchCertificates(query, callback) {
+    const apiUrl = `${this.baseUrl}/certificates/search`;
+    const requestData = new CertificateSearchRequest(
+      query.limit,
+      query.query,
+      query.start,
+      query.pages
+    );
+
+    const promisifiedCallback = this.promisify(callback);
+    try {
+      const response = await this.makeRequest(apiUrl, "POST", requestData);
+      promisifiedCallback(null, response);
+      return response;
+    } catch (error) {
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
   async getHostsIpDetails(ip, callback) {
     const apiUrl = `${this.baseUrl}/hosts/${ip}/`;
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "GET");
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
   async getIpCveDetails(ip, callback) {
     const apiUrl = `${this.baseUrl}/hosts/cve/${ip}/`;
-    try {
-      const response = await this.makeRequest(apiUrl, "GET", ip);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
 
+    const promisifiedCallback = this.promisify(callback);
+    try {
+      const response = await this.makeRequest(apiUrl, "GET");
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
@@ -108,79 +130,62 @@ class APIClient {
       query.query,
       query.start
     );
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
   async getHostsSummary(query, callback) {
     const apiUrl = `${this.baseUrl}/hosts/summary`;
     const requestData = new HostsSummaryRequest(query.limit, query.field);
+
+    const promisifiedCallback = this.promisify(callback);
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
   async getCertificateCount(query, callback) {
     const apiUrl = `${this.baseUrl}/certificates/count`;
     const requestData = new CertificateCountRequest(query);
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
   async getCertificateHashDetails(hash, callback) {
     const apiUrl = `${this.baseUrl}/certificates/${hash}/`;
-    try {
-      const response = await this.makeRequest(apiUrl, "GET", hash);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
+    const promisifiedCallback = this.promisify(callback);
 
+    try {
+      const response = await this.makeRequest(apiUrl, "GET");
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
-  // searchCertificates function with Promise and callback support
   async searchCertificates(query, callback) {
     const apiUrl = `${this.baseUrl}/certificates/search`;
     const requestData = new CertificateSearchRequest(
@@ -189,19 +194,15 @@ class APIClient {
       query.start,
       query.pages
     );
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 
@@ -212,19 +213,15 @@ class APIClient {
       query.field,
       query.query
     );
+    const promisifiedCallback = this.promisify(callback);
+
     try {
       const response = await this.makeRequest(apiUrl, "POST", requestData);
-      if (typeof callback === "function") {
-        callback(null, response);
-      }
-
+      promisifiedCallback(null, response);
       return response;
     } catch (error) {
-      if (typeof callback === "function") {
-        callback(error, null);
-      }
-
-      return Promise.reject(error);
+      promisifiedCallback(error, null);
+      throw error;
     }
   }
 }
