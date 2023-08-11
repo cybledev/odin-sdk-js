@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/client.js', 
   output: {
     path: path.resolve(__dirname, 'dist'), 
-    filename: 'odin-sdk-javascript.js', 
+    filename: 'odin-sdk-js.js', 
     library: 'ODIN',
     libraryTarget: 'umd',
   },

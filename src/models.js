@@ -1,50 +1,91 @@
-// HostCountRequestModel
+/**
+ * Represents a request model for counting hosts.
+ */
 class HostCountRequestModel {
+  /**
+   * Creates an instance of HostCountRequestModel.
+   * @param {Object} query - The query object for the request.
+   */
   constructor(query) {
     this.query = query;
   }
 }
 
-// HostsSearchRequest
+/**
+ * Represents a request for searching hosts.
+ */
 class HostsSearchRequest {
-  constructor(limit, query, start) {
+  /**
+   * Creates an instance of HostsSearchRequest.
+   * @param {number} limit - The limit of results to fetch.
+   * @param {string} query - The search query string.
+   * @param {Array} start - An array of starting points for search.
+   */
+  constructor(query, limit, start) {
     this.limit = limit;
     this.query = query || "";
     this.start = start || [];
   }
 }
 
-// HostsSummaryRequest
+/**
+ * Represents a request for summarizing hosts.
+ */
 class HostsSummaryRequest {
-  constructor(limit, field) {
+  /**
+   * Creates an instance of HostsSummaryRequest.
+   * @param {number} limit - The limit of results to fetch.
+   * @param {string} field - The field for summarization.
+   */
+  constructor(field, limit) {
     this.limit = limit;
     this.field = field || "";
   }
 }
 
-// CertificateCountRequest
+/**
+ * Represents a request model for counting certificates.
+ */
 class CertificateCountRequest {
+  /**
+   * Creates an instance of CertificateCountRequest.
+   * @param {Object} query - The query object for the request.
+   */
   constructor(query) {
     this.query = query;
   }
 }
 
-// CertificateSearchRequest
+/**
+ * Represents a request for searching certificates.
+ */
 class CertificateSearchRequest {
-  constructor(limit, query, start, pages) {
+  /**
+   * Creates an instance of CertificateSearchRequest.
+   * @param {number} limit - The limit of results to fetch.
+   * @param {string} query - The search query string.
+   * @param {Array} start - An array of starting points for search.
+   */
+  constructor(query, limit, start) {
     this.limit = limit;
     this.query = query || "";
     this.start = start || [];
-    this.pages = pages || "";
   }
 }
 
-// CertificateSummaryRequest
+/**
+ * Represents a request for summarizing certificates.
+ */
 class CertificateSummaryRequest {
-  constructor(limit, field, query) {
+  /**
+   * Creates an instance of CertificateSummaryRequest.
+   * @param {number} limit - The limit of results to fetch.
+   * @param {string} field - The field for summarization.
+   * @param {string} query - The search query string.
+   */
+  constructor(field, limit) {
     this.limit = limit;
     this.field = field || "";
-    this.query = query || "";
   }
 }
 

@@ -1,5 +1,5 @@
 {
-  "name": "odin-sdk-javascript",
+  "name": "odin-sdk-js",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "cyble",
-  "license": "ISC",
+  "license": "",
   "dependencies": {
     "node-fetch": "^3.3.2"
   },
