@@ -6,43 +6,11 @@ The Odin SDK for Javascript allows you to easily interact with the [Odin API](ht
 
 ## Installation
 
-### Using in Node.js
-
 To use the Odin SDK in your Javascript project, you need to install it using npm:
 
 ```bash
 npm install odin-sdk-js
 ```
-
-### Using in Browser
-
-To use the SDK in the browser, simply add the following script tag to your
-HTML pages:
-
-```html
-<script src="https://unpkg.com/odin-sdk-js/dist/odin-sdk-js.js"></script>
-```
-
-#### React
-
-```bash
-npm install odin-sdk-js
-```
-
-In the JavaScript file:
-```javascript
-import { APIClient } from "odin-sdk-js";
-```
-
-#### Angular
-In the html file include the script tag to load SDK
-```html
-<script src="https://unpkg.com/odin-sdk-js/dist/odin-sdk-js.js"></script>
-```
-Inject the odin sdk as a dependency in the module
-
-Note: For browser, use odin services that don't currently support CORS if you are
-working in an environment that does not enforce CORS
 
 ## Examples
 
