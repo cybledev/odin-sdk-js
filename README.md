@@ -41,7 +41,7 @@ In the html file include the script tag to load SDK
 ```
 Inject the odin sdk as a dependency in the module
 
-Note: For browser use odin services that don't currently support CORS if you are
+Note: For browser, use odin services that don't currently support CORS if you are
 working in an environment that does not enforce CORS
 
 ## Examples
