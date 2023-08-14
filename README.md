@@ -37,7 +37,7 @@ import { APIClient } from "odin-sdk-javascript";
 #### Angular
 In the html file include the script tag to load SDK
 ```html
-<script src="https://unpkg.com/odin-sdk-js@/dist/odin-sdk-js.js"></script>
+<script src="https://unpkg.com/odin-sdk-js/dist/odin-sdk-js.js"></script>
 ```
 Inject the odin sdk as a dependency in the module
 
