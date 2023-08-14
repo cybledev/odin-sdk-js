@@ -31,7 +31,7 @@ npm install odin-sdk-js
 
 In the JavaScript file:
 ```javascript
-import { APIClient } from "odin-sdk-javascript";
+import { APIClient } from "odin-sdk-js";
 ```
 
 #### Angular
