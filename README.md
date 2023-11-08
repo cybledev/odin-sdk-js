@@ -14,7 +14,7 @@ npm install odin-sdk-js
 
 ## Examples
 
-In the "examples" file, you can find various usage examples demonstrating how to interact with the Odin API using the `odin-sdk-js` package.
+Here is the [Example](https://github.com/cybledev/odin-sdk-js/blob/main/examples/examples.js), you can find various usage examples demonstrating how to interact with the Odin API using the `odin-sdk-js` package.
 
 Each example is a standalone javascript program that showcases specific functionalities of the SDK.
 

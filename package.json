@@ -1,14 +1,14 @@
 {
   "name": "odin-sdk-js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "ODIN's primary focus is to equip infosec teams with a precise depiction of the internet, enabling them to strengthen their security defences and proactively detect threats within their attack surface.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "cyble",
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "node-fetch": "^3.3.2"
   },
@@ -16,5 +16,13 @@
     "jest": "^29.6.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cybledev/odin-sdk-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cybledev/odin-sdk-js/issues"
+  },
+  "homepage": "https://github.com/cybledev/odin-sdk-js#readme"
 }
