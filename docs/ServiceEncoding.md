@@ -1,0 +1,9 @@
+# Odin.ServiceEncoding
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**raw** | **String** |  | [optional] 
+
+
