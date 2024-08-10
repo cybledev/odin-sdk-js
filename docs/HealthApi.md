@@ -1,12 +1,10 @@
 # Odin.HealthApi
 
-All URIs are relative to *https://staging.odinn.tech*
+All URIs are relative to *https://api.odin.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1PingGet**](HealthApi.md#v1PingGet) | **GET** /v1/ping | Health Check
-
-
+| Method                                  | HTTP request     | Description  |
+| --------------------------------------- | ---------------- | ------------ |
+| [**v1PingGet**](HealthApi.md#v1PingGet) | **GET** /v1/ping | Health Check |
 
 ## v1PingGet
 
@@ -19,14 +17,14 @@ Returns the pong as response
 ### Example
 
 ```javascript
-import Odin from 'odin';
+import Odin from "odin";
 
 let apiInstance = new Odin.HealthApi();
 apiInstance.v1PingGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log("API called successfully. Returned data: " + data);
   }
 });
 ```
@@ -47,4 +45,3 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain
-

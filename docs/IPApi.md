@@ -1,13 +1,15 @@
 # OdinApis.IPApi
 
-All URIs are relative to *http://staging.odinn.tech/v1/*
+All URIs are relative to *http://api.odin.io/v1/*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**faviconMurmurGet**](IPApi.md#faviconMurmurGet) | **GET** /favicon/{murmur} | Fetch the latest ip favicon
+| Method                                            | HTTP request              | Description                 |
+| ------------------------------------------------- | ------------------------- | --------------------------- |
+| [**faviconMurmurGet**](IPApi.md#faviconMurmurGet) | **GET** /favicon/{murmur} | Fetch the latest ip favicon |
 
 <a name="faviconMurmurGet"></a>
+
 # **faviconMurmurGet**
+
 > IpservicesAPIResponse faviconMurmurGet(murmur)
 
 Fetch the latest ip favicon
@@ -15,13 +17,14 @@ Fetch the latest ip favicon
 Returns the ip favicon details using murmur hash
 
 ### Example
+
 ```javascript
-import {OdinApis} from 'odin_apis';
+import { OdinApis } from "odin_apis";
 let defaultClient = OdinApis.ApiClient.instance;
 
 // Configure API key authorization: ApiKeyAuth
-let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
-ApiKeyAuth.apiKey = 'YOUR API KEY';
+let ApiKeyAuth = defaultClient.authentications["ApiKeyAuth"];
+ApiKeyAuth.apiKey = "YOUR API KEY";
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
@@ -32,16 +35,16 @@ apiInstance.faviconMurmurGet(murmur, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log("API called successfully. Returned data: " + data);
   }
 });
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **murmur** | **String**| murmur hash | 
+| Name       | Type       | Description | Notes |
+| ---------- | ---------- | ----------- | ----- |
+| **murmur** | **String** | murmur hash |
 
 ### Return type
 
@@ -53,6 +56,5 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
+- **Content-Type**: Not defined
+- **Accept**: application/json
