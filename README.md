@@ -2,7 +2,7 @@
 
 ODIN's primary focus is to equip infosec teams with a precise depiction of the internet, enabling them to strengthen their security defences and proactively detect threats within their attack surface.
 
-The Odin SDK for Go provides a simple way to interact with the [Odin API](https://getodin.com/docs/api) and access various services related to cybersecurity, certificates, and more.
+The Odin SDK for Go provides a simple way to interact with the [Odin API](https://docs.odin.io/api/api-key) and access various services related to cybersecurity, ip services, certificates, exposed files, domains and more.
 
 ## Installation
 
@@ -13,7 +13,7 @@ The Odin SDK for Go provides a simple way to interact with the [Odin API](https:
 Then install it via:
 
 ```shell
-npm install odin --save
+npm install odin-sdk --save
 ```
 
 ### For browser
@@ -336,8 +336,8 @@ Authentication schemes defined for the API:
 - **API key parameter name**: X-API-Key
 - **Location**: HTTP header
 
-Generate your [Odin API key from the odin dashboard.](https://getodin.com/account/profile/api-keys)
+Generate your [Odin API key from the odin dashboard.](https://search.odin.io/account/api-keys)
 
 Thank you for using the Odin SDK for Javascript. If you encounter any issues, find a bug, or want to contribute, feel free to open an issue or submit a pull request. Your feedback and contributions are highly appreciated!
 
-For more information about our other projects and services, visit our website at <https://www.getodin.com>.
+For more information about our other projects and services, visit our website at <https://odin.io>.
