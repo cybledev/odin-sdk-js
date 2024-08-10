@@ -1,6 +1,6 @@
 {
   "name": "odin-sdk",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "ODIN SDK provides search across IP Services, CVEs, Certificates, Exposed Files/Buckets, Domains and more",
   "license": "Apache 2.0",
   "main": "dist/index.js",
@@ -39,6 +39,9 @@
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
     "sinon": "^7.2.0"
+  },
+  "publishConfig": {
+    "branch": "v2"
   },
   "repository": {
     "type": "git",

@@ -51,7 +51,7 @@ module: {
 Please follow the [installation](#installation) instruction and execute the following JS code:
 
 ```javascript
-var Odin = require("odin");
+var Odin = require("odin-sdk");
 
 var defaultClient = Odin.ApiClient.instance;
 // Configure API key authorization: ApiKeyAuth
